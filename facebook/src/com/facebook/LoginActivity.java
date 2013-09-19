@@ -114,7 +114,12 @@ public class LoginActivity extends Activity {
             return;
         }
 
-        authorizationClient.startOrContinueAuth(request);
+        if(request != null){
+          authorizationClient.startOrContinueAuth(request);
+        }else {
+          setResult(RESULT_CANCELED);
+          finish();
+        }
     }
 
     @Override
