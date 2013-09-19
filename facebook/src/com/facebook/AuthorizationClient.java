@@ -516,7 +516,9 @@ class AuthorizationClient implements Serializable {
         bundle.putString(EVENT_PARAM_METHOD, method);
         bundle.putLong(EVENT_PARAM_TIMESTAMP, System.currentTimeMillis());
 
+      if(appEventsLogger != null){
         appEventsLogger.logSdkEvent(EVENT_NAME_LOGIN_METHOD_COMPLETE, null, bundle);
+      }
     }
 
     static Bundle newAuthorizationLoggingBundle(String authLoggerId) {
