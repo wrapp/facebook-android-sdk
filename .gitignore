@@ -17,3 +17,4 @@ facebook/tests/assets/config.json
 .idea/inspectionProfiles/
 *.iml
 build/
+.gradle/
