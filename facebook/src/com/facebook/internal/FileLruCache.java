@@ -221,14 +221,16 @@ public final class FileLruCache {
         // get the current directory listing of files to delete
         final File[] filesToDelete = directory.listFiles(BufferFile.excludeBufferFiles());
         lastClearCacheTime.set(System.currentTimeMillis());
-        Settings.getExecutor().execute(new Runnable() {
-            @Override
-            public void run() {
-                for (File file : filesToDelete) {
-                    file.delete();
-                }
-            }
-        });
+        if(filesToDelete != null){
+          Settings.getExecutor().execute(new Runnable() {
+              @Override
+              public void run() {
+                 for (File file : filesToDelete) {
+                      file.delete();
+                 }
+              }
+          });
+        }
     }
 
     private void renameToTargetAndTrim(String key, File buffer) {
