@@ -1561,6 +1561,10 @@ public class Request {
      *            If there was an error in the protocol used to communicate with the service
      */
     public static List<Response> executeConnectionAndWait(HttpURLConnection connection, RequestBatch requests) {
+       if(connection == null){
+         return Collections.emptyList();
+       }
+
         List<Response> responses = Response.fromHttpConnection(connection, requests);
 
         Utility.disconnectQuietly(connection);
