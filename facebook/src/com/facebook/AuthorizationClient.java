@@ -781,11 +781,6 @@ class AuthorizationClient implements Serializable {
 
             tryNextHandler();
         }
-
-      @Override
-      boolean needsRestart() {
-        return true;
-      }
     }
 
     abstract class KatanaAuthHandler extends AuthHandler {
