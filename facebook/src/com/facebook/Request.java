@@ -1565,7 +1565,20 @@ public class Request {
          return Collections.emptyList();
        }
 
-        List<Response> responses = Response.fromHttpConnection(connection, requests);
+      List<Response> responses = null;
+      try{
+        responses = Response.fromHttpConnection(connection, requests);
+      } catch (Exception e){
+        //skip this, this is a quick fix for all broken xperia devices..
+        // java.lang.IllegalStateException
+        // at libcore.net.http.HttpEngine.getResponseHeaders(HttpEngine.java:391)
+        // at libcore.net.http.HttpResponseCache.put(HttpResponseCache.java:164)
+      }
+
+
+      if(responses == null){
+        return Collections.emptyList();
+      }
 
         Utility.disconnectQuietly(connection);
 
