@@ -620,7 +620,11 @@ public class AppEventsLogger {
                             }
                         }
                         for (String applicationId : applicationIds) {
+                          try{
                             Utility.queryAppSettings(applicationId, true);
+                          }catch (Exception e){
+                            //TODO: Fix this in a better way.. facebook?
+                          }
                         }
                     }
                 },
